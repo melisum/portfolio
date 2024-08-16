@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block title %}Cafes{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+
+      <h1>All Cafes</h1>
+
+	  <table class="table table-dark table-striped table-hover">
+            <thead>
+    <tr>
+
+      <th scope="col">Name</th>
+      <th scope="col">Location URL</th>
+      <th scope="col">Picture</th>
+      <th scope="col">Location</th>
+      <th scope="col">Sockets</th>
+      <th scope="col">Toilets</th>
+      <th scope="col">Wifi</th>
+      <th scope="col">Calls</th>
+      <th scope="col">Nr. of seats</th>
+      <th scope="col">Coffee price</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  {% for cafe in cafes %}
+  <tr>
+
+
+
+      <td>{{ cafe.name }}</td>
+    <td>{{ cafe.location }}</td>
+    <td><a href="{{ cafe.img_url }}">Picture</a></td>
+    <td><a href="{{ cafe.map_url }}">Maps Link</a></td>
+    <td>{% if cafe.has_sockets %}
+          🔌
+        {% else %}
+        ✘
+        {%endif%}
+    </td>
+    <td>{% if cafe.has_toilet %}
+          🚽
+        {% else %}
+        ✘
+        {%endif%}
+    </td>
+    <td>{% if cafe.has_wifi %}
+      📶
+        {% else %}
+        ✘
+        {%endif%}
+    </td>
+    <td>{% if cafe.can_take_calls %}
+      ☎️
+        {% else %}
+        ✘
+        {%endif%}
+    </td>
+    <td>{{ cafe.seats }}</td>
+    <td>{{ cafe.coffee_price }}</td>
+
+
+    </tr>
+    {% endfor %}
+  </tbody>
+  	  </table>
+
+      <p><a href="{{url_for('home')}}">Return to start page</a></p>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -45,8 +45,8 @@ FONT_NAME="Courier"
 canvas=Canvas(width=200, height=280, bg="#f7f5dd", highlightthickness=0)
 
 
-name=Label(text="Create a custom watermark", bg="#f7f5dd", font=(FONT_NAME,12,"bold"))
-timer=Label(text="Type in your watermark text here:", bg="#f7f5dd", font=(FONT_NAME,8,"normal"))
+name=Label(text="Create a custom Watermark", bg="#f7f5dd", font=(FONT_NAME,12,"bold"))
+timer=Label(text="Type in your Watermark text here:", bg="#f7f5dd", font=(FONT_NAME,8,"normal"))
 input=Entry(width=30)
 upload=Button(text="Upload & Create", command=create_watermark)
 
