@@ -1,0 +1,63 @@
+
+{% from "bootstrap5/form.html" import render_form %} {% block content %}
+{% include "header.html" %}
+
+<!-- Page Header-->
+<header
+  class="masthead h-50"
+  style="background-image: url('../static/assets/img/home.jpg')"
+>
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="site-heading">
+          <h1>To do or not to do?  </h1>
+          <span class="subheading">Create free TO DO lists</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- Main Content-->
+<div class="container px-4 py-4 px-lg-5">
+{% if logged_in %}
+    {{ render_form(form, novalidate=True, button_map={"submit": "primary"} )  }}
+
+    <ul class="list-group">
+
+        {% for task in all_tasks %}
+    <li class="list-group-item">
+        <div class="custom-control custom-checkbox">
+
+
+  <input type="checkbox" class="custom-control-input" value="0" id="customCheck1" >
+  <label class="custom-control-label" for="customCheck1">{{task.body}}</label>
+
+</div>
+
+<!--      <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckboxStretched">-->
+<!--      <label class="form-check-label stretched-link" for="firstCheckboxStretched">{{todo}}</label>-->
+    </li>
+        {%endfor%}
+
+    </ul>
+{% else %}
+    <div class="row gx-4 gx-lg-5 py-2 justify-content-md-end">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+
+        <div class="gx-4 gx-lg-5 d-grid gap-5 d-md-flex justify-content-md-end">
+          <a
+            class="btn btn-primary "
+            href="{{url_for('login')}}"
+            >Log in to TODO</a
+          >
+
+          <a class="btn btn-secondary " href="{{url_for('register')}}">New here? Register →</a>
+
+      </div>
+    </div>
+  </div>
+</div>
+{%endif%}
+
+{% include "footer.html" %}{% endblock %}

@@ -1,0 +1,57 @@
+
+<!--{% from "bootstrap5/form.html" import render_form %} {% block content %}-->
+{% include "header.html" %}
+
+<!-- Page Header-->
+<header
+  class="masthead h-50"
+  style="background-image: url('../static/assets/img/home.jpg')"
+>
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="site-heading">
+          <h1>To do or not to do?  </h1>
+          <span class="subheading">Create free TO DO lists</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- Main Content-->
+<div class="container px-4 py-4 px-lg-5">
+
+    <form class="new_task" id="new_task" action="{{ url_for('add_todo') }}" accept-charset="UTF-8" data-remote="true" method="post">
+      <input name="utf8" type="hidden" value="✓">
+      <label for="task_description">Add another task</label>
+      <input autofocus="autofocus" autocomplete="off" placeholder="Write your next task here..." required="required" type="text" value="" name="task_description" id="task_description">
+      <input type="submit" name="commit" value="Save Task" data-disable-with="Save Task">
+    </form>
+
+  <ul class="list-group">
+        {% for task in tasklist %}
+    <li class="list-group-item">
+      <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckboxStretched">
+      <label class="form-check-label stretched-link" for="firstCheckboxStretched">{{task}}</label>
+    </li>
+        {%endfor%}
+    <div class="row gx-4 gx-lg-5 py-2 justify-content-md-end">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+
+        <div class="gx-4 gx-lg-5 d-grid gap-5 d-md-flex justify-content-md-end">
+
+          <a
+            class="btn btn-primary "
+            href="#"
+            >Log in to TODO</a
+          >
+
+          <a class="btn btn-secondary " href="#!">New here? Register and save your tasks</a>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% include "footer.html" %}{% endblock %}
