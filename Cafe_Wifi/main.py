@@ -104,7 +104,7 @@ def add_cafe():
 def cafes():
     # result = db.session.execute(db.select(Cafes))
     cafe_list = Cafes.query
-    return render_template('cafes.html', cafes=cafe_list)
+    return render_template('palette.html', cafes=cafe_list)
 
 
 

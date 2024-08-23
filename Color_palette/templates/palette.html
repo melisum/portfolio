@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% from "bootstrap5/form.html" import render_form %}
+{% block title %}Color Palette{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>Upload and pull the most common colors out of an image. </h1>
+      {% if picture == "queen.png" %}
+      <h2> Here is an example picture:</h2>
+      {% endif %}
+    </div>
+    <div class="col-6">
+
+      <img src="static/{{picture}}" class="object-fit-contain border rounded" alt="" width="400">
+    </div>
+    <div class="col-sm-10">
+      <table class="table" style="color: white">
+
+        <thead>
+        <tr><th>Color</th><th>HEX Code</th><th>RGB</th></tr>
+        </thead>
+        {% for x in range (1,10) %}
+        <tr>
+          <td style="background-color:{{codes[x]}}"></td>
+          <td>{{ codes[x] }}</td>
+          <td>{{ rgbs[x] }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      <div class="col-5">
+      <p>
+        {{ render_form(form, novalidate=True, button_map={"submit": "primary"} )  }}
+      </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
